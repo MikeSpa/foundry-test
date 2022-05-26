@@ -18,8 +18,6 @@ contract StakeContractTest is Test {
     }
 
     function testStake(uint8 amount) public {
-        assertTrue(true);
-        // uint256 amount = 10e18;
         mockERC20.approve(address(stakeContract), amount);
         cheats.roll(55);
         bool stakePassed = stakeContract.stake(amount, address(mockERC20));
