@@ -5,10 +5,12 @@ import "forge-std/Test.sol";
 
 import "../src/StakeContract.sol";
 import "./mocks/MockERC20.sol";
+import "./utils/Cheats.sol";
 
 contract StakeContractTest is Test {
     StakeContract public stakeContract;
     MockERC20 public mockERC20;
+    Cheats internal constant cheats = Cheats(HEVM_ADDRESS);
 
     function setUp() public {
         stakeContract = new StakeContract();
@@ -19,6 +21,7 @@ contract StakeContractTest is Test {
         assertTrue(true);
         // uint256 amount = 10e18;
         mockERC20.approve(address(stakeContract), amount);
+        cheats.roll(55);
         bool stakePassed = stakeContract.stake(amount, address(mockERC20));
         assertTrue(stakePassed);
     }
