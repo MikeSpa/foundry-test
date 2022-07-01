@@ -32,4 +32,8 @@ local-node: setup-yarn
 
 deploy:
 	forge create StakeContract --private-key ${PRIVATE_KEY_CHROME_MM} # --rpc-url 
+
+deploy_NFT:
+	forge create NFT --rpc-url=${RPC_URL} --private-key=${PRIVATE_KEY_CHROME_MM} --constructor-args "FOUNDRYNFT" "FNFT"
+
 	
